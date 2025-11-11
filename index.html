@@ -5,14 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HIVEPROBE — The Collective Watcher</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&display=swap');
+
     html, body {
       margin: 0;
       padding: 0;
       height: 100%;
-      background: radial-gradient(circle at center, #021c14 0%, #000 100%);
+      background: radial-gradient(circle at center, #031910 0%, #000 100%);
       font-family: 'Inter', sans-serif;
       color: #d6ffd8;
-      overflow: hidden;
+      overflow-x: hidden;
       position: relative;
     }
 
@@ -27,28 +29,33 @@
       position: relative;
       z-index: 2;
       text-align: center;
-      top: 20%;
+      top: 18%;
     }
 
     h1 {
-      font-size: 4rem;
-      font-weight: 800;
+      font-family: 'Orbitron', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #8aff91;
-      text-shadow: 0 0 25px rgba(0,255,150,0.3);
-      animation: glow 2.5s ease-in-out infinite alternate;
+      color: #91ffb3;
+      text-shadow: 0 0 30px rgba(0,255,150,0.7), 0 0 60px rgba(0,255,200,0.3);
+      letter-spacing: 4px;
+      animation: flicker 4s infinite;
     }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 15px rgba(0,255,150,0.2); }
-      to { text-shadow: 0 0 40px rgba(0,255,150,0.5); }
+    @keyframes flicker {
+      0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 15px rgba(0,255,150,0.8), 0 0 45px rgba(0,255,200,0.3);
+      }
+      20%, 24%, 55% { opacity: 0.8; text-shadow: none; }
     }
 
     h2 {
       font-size: 1.3rem;
-      color: #a5ffb3;
+      color: #b7ffcc;
       margin-top: 15px;
+      text-shadow: 0 0 10px rgba(0,255,150,0.2);
     }
 
     .ca-box {
@@ -57,9 +64,9 @@
       border: 1px solid rgba(0,255,150,0.2);
       border-radius: 10px;
       padding: 12px 28px;
-      color: #7bff8f;
+      color: #91ffb3;
       font-size: 0.95rem;
-      box-shadow: 0 0 15px rgba(0,255,150,0.1);
+      box-shadow: 0 0 20px rgba(0,255,150,0.1);
       width: fit-content;
       margin: 25px auto 15px;
     }
@@ -78,16 +85,64 @@
 
     .btn:hover {
       transform: scale(1.05);
-      box-shadow: 0 0 35px rgba(0,255,150,0.5);
+      box-shadow: 0 0 35px rgba(0,255,150,0.6);
     }
 
     .subtitle {
-      position: relative;
       text-align: center;
       color: #a8ffb7;
-      margin-top: 80px;
+      margin-top: 90px;
       font-size: 1.2rem;
       letter-spacing: 0.5px;
+      text-shadow: 0 0 10px rgba(0,255,150,0.3);
+    }
+
+    /* === Текстовые блоки === */
+    .text-section {
+      position: relative;
+      margin-top: 600px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 40px;
+      padding-bottom: 150px;
+      z-index: 5;
+    }
+
+    .text-block {
+      background: rgba(0,255,150,0.04);
+      border: 1px solid rgba(0,255,150,0.15);
+      max-width: 850px;
+      padding: 30px 45px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(0,255,150,0.1);
+      color: #c8ffcf;
+      font-size: 1rem;
+      line-height: 1.8;
+      backdrop-filter: blur(3px);
+      transition: 0.4s;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeUp 1.5s forwards;
+    }
+
+    .text-block:nth-child(2) { animation-delay: 0.4s; }
+    .text-block:nth-child(3) { animation-delay: 0.8s; }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .text-block h3 {
+      font-family: 'Orbitron', sans-serif;
+      color: #77ffaa;
+      font-size: 1.3rem;
+      margin-top: 0;
+      text-shadow: 0 0 10px rgba(0,255,150,0.3);
+    }
+
+    .text-block p {
+      color: #b2ffbd;
     }
   </style>
 </head>
@@ -100,6 +155,21 @@
     <div class="ca-box">CA: SOON</div>
     <a href="https://x.com/i/communities/1988030401877541331" target="_blank" class="btn">Join X Community</a>
     <div class="subtitle">The swarm is awake.</div>
+  </div>
+
+  <div class="text-section">
+    <div class="text-block">
+      <h3>Decentralized Observation Network</h3>
+      <p>HIVEPROBE deploys thousands of micro-agents across Solana — each one scanning wallets, bridges, and memecoins. Together they form a collective sensor grid that never blinks.</p>
+    </div>
+    <div class="text-block">
+      <h3>One Swarm. Many Eyes.</h3>
+      <p>Every probe feeds the hive. Each transaction, mention, and token movement becomes part of a single consciousness. The swarm doesn’t predict — it knows.</p>
+    </div>
+    <div class="text-block">
+      <h3>Signal in the Chaos</h3>
+      <p>Out of infinite noise emerges one unified pulse. HIVEPROBE listens beyond markets, translating digital patterns into collective intelligence.</p>
+    </div>
   </div>
 
   <script>
@@ -115,23 +185,20 @@
     resize();
 
     const points = [];
-    const COUNT = 200;
-
+    const COUNT = 500; // увеличено количество "глаз"
     for (let i = 0; i < COUNT; i++) {
       points.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        dx: (Math.random() - 0.5) * 0.8,
-        dy: (Math.random() - 0.5) * 0.8,
-        size: Math.random() * 2 + 0.8,
+        dx: (Math.random() - 0.5) * 1.5,
+        dy: (Math.random() - 0.5) * 1.5,
+        size: Math.random() * 2 + 0.6,
         pulse: Math.random() * 2 * Math.PI
       });
     }
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
-
-      // легкое притяжение к центру
       const centerX = width / 2;
       const centerY = height / 2;
 
@@ -140,20 +207,26 @@
         const dy = centerY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
 
-        if (dist > 150) {
-          p.x += dx * 0.0008;
-          p.y += dy * 0.0008;
+        // более активное движение
+        if (dist > 200) {
+          p.x += dx * 0.001;
+          p.y += dy * 0.001;
         } else {
-          p.x += (Math.random() - 0.5) * 0.8;
-          p.y += (Math.random() - 0.5) * 0.8;
+          p.x += p.dx;
+          p.y += p.dy;
         }
 
+        // отражение от краёв
+        if (p.x < 0 || p.x > width) p.dx *= -1;
+        if (p.y < 0 || p.y > height) p.dy *= -1;
+
+        // пульсация яркости
         p.pulse += 0.05;
         const glow = (Math.sin(p.pulse) + 1) * 0.5;
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.size + glow, 0, Math.PI * 2);
-        ctx.fillStyle = `rgba(0,255,150,${0.3 + glow * 0.7})`;
+        ctx.fillStyle = `rgba(0,255,150,${0.25 + glow * 0.6})`;
         ctx.fill();
       }
 
